@@ -2,6 +2,7 @@
 
 # We will use the Buffon-Laplace Method to estimate
 # the size of π
+# run with `python estimate_pi.py`
 
 import random
 import numpy as np
