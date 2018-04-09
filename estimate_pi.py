@@ -23,18 +23,19 @@ def estimatePi(trials, numPoints=1000):
 
         estimatedPi = 4 * (inCircleCount / float(numPoints)) # Buffon-Laplace Method π = 4 * areaOfCircle / areaOfSquare
         estimatedPis.append(estimatedPi)
+
     estimatedPis = np.array(estimatedPis)
-    mean = estimatedPis.mean()
-    std = estimatedPis.std()
-    print(f'estimated pi: {mean} and std: {std}')
+    mean = np.mean(estimatedPis)
+    std = np.std(estimatedPis)
+    print(f'estimated pi: {round(mean, 6)} and std: {round(std, 6)}. number of needles: {numPoints}')
     return (mean, std)
 
 def simulationForPi(precision, trials):
+    numNeedles = 1000
     std = precision
     while std >= precision/2:
-        currentEstimate, std = estimatePi(trials)
-        print("trials", trials)
-        trials *= 2
+        currentEstimate, std = estimatePi(trials, numNeedles)
+        numNeedles *= 2
     return currentEstimate
 
 simulationForPi(0.005, 100)
